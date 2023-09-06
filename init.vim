@@ -24,7 +24,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ervandew/supertab'
 Plug 'andweeb/presence.nvim'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 
 set encoding=UTF-8
@@ -32,13 +32,14 @@ set encoding=UTF-8
 call plug#end()
 
 nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <Tab> :bn<cr>
 
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
+:set clipboard+=unnamedplus
 
 :colorscheme dracula
 
@@ -71,3 +72,6 @@ let g:presence_line_number_text    = "Line %s out of %s"
 
 command NT NERDTree
 
+lua << EOF
+require("bufferline").setup{}
+EOF
